@@ -1,0 +1,20 @@
+marquee,#feature{
+    font-family: 'Supermercado One', cursive;
+
+}
+
+#feature-title{
+    position: relative;
+}
+
+#feature-title::after{
+    content: '';
+    width: 150px;
+    height: 5px;
+    background-color: rgb(96, 96, 224);
+    position: absolute;
+    top: 90px;
+    left: 60px;
+}
+
+

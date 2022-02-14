@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import AuthProvider from "./Context/AuthProvider";
+import CartContext from "./Context/CartContext";
+import OffcanvasContext from "./Context/OffcanvasContext";
+import Home from "./Pages/Home/Home/Home";
+import ProductDetail from "./Pages/Home/ProductDetail/ProductDetail";
+import Cart from "./Pages/Orders/Cart/Cart";
+import PrivateRoute from "./Pages/PrivateRoute/PrivateRoute";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  <AuthProvider>
+    <CartContext>
+       <OffcanvasContext>
+      <Router>
+      <Routes>
+        <Route path="/" element={<Home/>} />
+        <Route path="/home" element={<Home/>} />
+        <Route path="/products/:id" element={<PrivateRoute>
+          <ProductDetail/>
+        </PrivateRoute>} />
+        <Route path="/cart" element={<Cart/>} />
+      </Routes>
+    </Router>
+   </OffcanvasContext>
+  </CartContext>
+  </AuthProvider>
   );
 }
 
