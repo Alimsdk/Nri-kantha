@@ -42,7 +42,7 @@ const LoginModal = () => {
     return (
         <div >
                {
-                   loginModal && <div id='offcanvas-login' className=' fixed right-0 top-40 md:top-0 bg-white md:w-80 shadow-lg h-auto pb-9  md:pb-0 md:h-full overflow-auto z-50'>
+                   loginModal && <div id='offcanvas-login' className=' fixed right-0 top-32 md:top-5 bg-white md:w-80 shadow-lg h-auto pb-9  md:pb-0 md:h-full overflow-auto z-50'>
                         <div>
                            { !user && <h3 className='text-xl text-center py-1.5 font-semibold mr-5'>{showReg?'Please Register' : 'Please LogIn'}</h3>}
                         <div id="close-canvas" className='absolute left-3/4 md:left-3/4 top-2  ' onClick={()=>setLoginModal(!loginModal)}>
@@ -57,11 +57,11 @@ const LoginModal = () => {
                             <form onSubmit={handleSignIn}>
                             <div className='mt-2'>
                              <label htmlFor="email" className='ml-6 '>Email</label> <br />
-                            <input type="email" name="email" onBlur={(e)=>setEmail(e.target.value)} id="email" className='border font-thin border-slate-600 md:mx-3 px-4 py-0.5 mt-1 flex mx-auto w-72' placeholder='Your Email' />
+                            <input type="email" name="email" onBlur={(e)=>setEmail(e.target.value)} id="email" className='border font-light border-slate-600 mx-5 px-4 py-0.5 mt-1 flex md:mx-auto w-72' placeholder='Your Email' />
                              </div>
                              <div className='mt-2'>
                              <label htmlFor="pass" className='ml-6 '>Password</label> <br />
-                            <input type="password" onBlur={(e)=>setPassword(e.target.value)} name='password'  id="pass" className='border font-thin  border-slate-600  md:mx-3 px-4 py-0.5 mt-1 flex mx-auto w-72' placeholder='Your Password' />
+                            <input type="password" onBlur={(e)=>setPassword(e.target.value)} name='password'  id="pass" className='border font-light  border-slate-600  mx-5 px-4 py-0.5 mt-1 flex md:mx-auto w-72' placeholder='Your Password' />
                              </div>
                              <input type="submit" className='w-48 bg-black hover:bg-yellow-400 hover:text-black text-white cursor-pointer py-0.5 flex justify-center mx-auto mt-5 rounded' value="LOGIN" />
                             </form>

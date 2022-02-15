@@ -6,6 +6,7 @@ import Banner from '../Banner/Banner';
 import FeaturedProducts from '../FeaturedProducts/FeaturedProducts';
 import Topbar from '../Topbar/Topbar';
 import Footer from '../Footer/Footer';
+import CartModal from '../../Account/CartModal/CartModal';
 
 const Home = () => {
     return (
@@ -13,6 +14,7 @@ const Home = () => {
             <Topbar/>
             <Navbar/>
             <LoginModal />
+            <CartModal/>
             <Banner/>
             <FeaturedProducts/>
             <AllProducts/>

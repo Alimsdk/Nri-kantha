@@ -4,8 +4,6 @@ import CartContext from "./Context/CartContext";
 import OffcanvasContext from "./Context/OffcanvasContext";
 import Home from "./Pages/Home/Home/Home";
 import ProductDetail from "./Pages/Home/ProductDetail/ProductDetail";
-import Cart from "./Pages/Orders/Cart/Cart";
-import PrivateRoute from "./Pages/PrivateRoute/PrivateRoute";
 
 function App() {
   return (
@@ -16,10 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/home" element={<Home/>} />
-        <Route path="/products/:id" element={<PrivateRoute>
-          <ProductDetail/>
-        </PrivateRoute>} />
-        <Route path="/cart" element={<Cart/>} />
+        <Route path="/products/:id" element={<ProductDetail/>} />
       </Routes>
     </Router>
    </OffcanvasContext>

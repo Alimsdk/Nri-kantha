@@ -21,8 +21,8 @@ const FeaturedProducts = () => {
     },[])
 
     return (
-        <div id='feature' className="bg-yellow-400 my-12 pb-9 pl-1.5 md:pl-5 ">
-            <h2 id='feature-title' className='pt-9 pb-16 text-2xl '>Feature Products</h2>
+        <div id='feature' className="bg-yellow-400 my-12 pb-9 pl-1 md:pl-5 ">
+            <h2 id='feature-title' className='pt-9 ml-5 md:ml-0  pb-16 text-2xl '>Feature Products</h2>
             <Swiper loop={true}
         
         autoplay={{      
@@ -60,7 +60,7 @@ const FeaturedProducts = () => {
                    
                     <div className='feature-slider bg-white w-40  h-80 shadow-lg shadow-slate-200 mx-auto md:mx-0 flex md:inline-block'>
                     <Link to={`/products/${product.key}`}>
-                       <img className='w-full h-48 mx-auto md:mx-0' src={product.image1} alt="" />
+                       <img className='w-full h-48 mx-0' src={product.image1} alt="" />
                     <div className='pt-4 pl-4'>
                     <h3 className='pb-1.5'>{product.name}</h3>
                     

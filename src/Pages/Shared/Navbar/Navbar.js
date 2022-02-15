@@ -5,7 +5,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import useAuth from '../../../Hooks/useAuth';
 import useCartProducts from '../../../Hooks/useCartProducts';
-import useFirebase from '../../../Hooks/useFirebase';
 import useLoginCanvas from '../../../Hooks/useLoginCanvas';
 import logo from '../../../resources/icons/logo.png'
 import './Navbar.css'
@@ -13,8 +12,9 @@ const Navbar = () => {
     const [searchIcon,setSearchIcon]=useState(false);
     const [fixed,setFixed]=useState(false);
     const {cartProducts}=useCartProducts();
-    // const navigate=useNavigate();
   const {loginModal,setLoginModal}=useLoginCanvas();
+  const {cartModal,setCartModal}=useCartProducts();
+  console.log(cartModal)
   const {user}=useAuth();
 
   window.addEventListener('scroll',function(){
@@ -41,7 +41,7 @@ const Navbar = () => {
                </div>
                <div>
                    <button onClick={()=>setSearchIcon(!searchIcon)} className='  md:hidden p-3 '><FontAwesomeIcon icon={faSearch} className="text-2xl  hover:text-yellow-500"/></button>
-                   <button className='ml-3 mr-5  shop-icons'><FontAwesomeIcon id='cart' icon={faShoppingCart} className="text-2xl hover:text-yellow-500 transition ease-in-out delay-150   hover:scale-110  duration-300 ... "/>  <p id='cart-badge' className='icons-badge text-4xl'> {cartProducts?.quantity} </p> </button>
+                   <button className='ml-3 mr-5  shop-icons' onClick={()=>setCartModal(!cartModal)}><FontAwesomeIcon id='cart' icon={faShoppingCart} className="text-2xl hover:text-yellow-500 transition ease-in-out delay-150   hover:scale-110  duration-300 ... "/>  <p id='cart-badge' className='icons-badge text-4xl'> {cartProducts?.quantity} </p> </button>
                    <button className='ml-5 md:ml-9' ><FontAwesomeIcon onClick={()=>setLoginModal(!loginModal)} color={user?'green':'black'} icon={faUser} className=' text-2xl   transition ease-in-out delay-150   hover:scale-110  duration-300' /></button>
                    {/* onClick={()=>navigate('/login')} */}
                         {/* <Link className='hidden md:inline underline decoration-2' to='/login'>LogIn</Link> */}
