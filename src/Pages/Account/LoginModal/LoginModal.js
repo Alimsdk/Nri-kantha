@@ -42,7 +42,7 @@ const LoginModal = () => {
     return (
         <div >
                {
-                   loginModal && <div id='offcanvas-login' className=' absolute right-0 top-40 md:top-0 bg-white md:w-80 shadow-lg h-auto pb-9  md:pb-0 md:h-full overflow-auto z-50'>
+                   loginModal && <div id='offcanvas-login' className=' fixed right-0 top-40 md:top-0 bg-white md:w-80 shadow-lg h-auto pb-9  md:pb-0 md:h-full overflow-auto z-50'>
                         <div>
                            { !user && <h3 className='text-xl text-center py-1.5 font-semibold mr-5'>{showReg?'Please Register' : 'Please LogIn'}</h3>}
                         <div id="close-canvas" className='absolute left-3/4 md:left-3/4 top-2  ' onClick={()=>setLoginModal(!loginModal)}>

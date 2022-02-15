@@ -8,7 +8,7 @@ const PrivateRoute = ({children}) => {
     const location=useLocation();
     const {user,loading}=useAuth();
     if(loading){
-        <svg class="animate-spin h-5 w-5 mr-3 text-3xl" viewBox="0 0 24 24">  </svg>
+       <h2>Loading.....</h2>
     }
     if(user){
     return children
