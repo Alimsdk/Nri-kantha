@@ -11,14 +11,14 @@ import CartModal from '../../Account/CartModal/CartModal';
 const Home = () => {
     return (
         <div>
-            <Topbar/>
-            <Navbar/>
+         <Topbar/>
+       <Navbar/>
             <LoginModal />
             <CartModal/>
             <Banner/>
             <FeaturedProducts/>
             <AllProducts/>
-            <Footer/>
+            <Footer/> 
         </div>
     );
 };

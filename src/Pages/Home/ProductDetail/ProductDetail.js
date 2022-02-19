@@ -2,7 +2,8 @@ import { faCheckSquare } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import useCart from '../../../Hooks/useCart';
+import useCartProducts from '../../../Hooks/useCartProducts'
+import CartModal from '../../Account/CartModal/CartModal';
 import LoginModal from '../../Account/LoginModal/LoginModal';
 import Navbar from '../../Shared/Navbar/Navbar';
 import Topbar from '../Topbar/Topbar';
@@ -10,7 +11,7 @@ import Topbar from '../Topbar/Topbar';
 const ProductDetail = () => {
     const [addedCart,setAddedCart]=useState(1);
     const [productInfo,setProductInfo]=useState({})
-    const {cartProducts,setCartProducts}=useCart();
+    const {cartProducts, handleAddtoCart,cartModal,setCartModal}=useCartProducts();
     const {id}=useParams();
 
     useEffect(()=>{
@@ -23,21 +24,28 @@ const ProductDetail = () => {
        fetchDetails();
     },[])
 
-    const handleAddtoCart=()=>{
-        if(productInfo){
-            productInfo.quantity=addedCart;
-            setCartProducts(productInfo)
+    const handleAddToCart = () => {
+        const product = {
+            ...productInfo,
+            quantity: addedCart
         }
+
+        handleAddtoCart(product);
+
+        setCartModal(true)
+
+        setAddedCart(1)
     }
 
-  
 
 
-    return (
+
+      return (
         <div>
             <Topbar/>
             <Navbar/>
             <LoginModal/>
+            <CartModal/>
             <div className="grid grid-cols-1 md:grid-cols-3 mt-9 ">
                 <div>
                     <img className='h-80 w-64 flex mx-auto  md:ml-20' src={productInfo?.image1} alt="" />
@@ -57,12 +65,12 @@ const ProductDetail = () => {
                         <p className='text-xs'>Quantity</p>
                         <div className='mt-3 flex items-center'>
                             <button className='bg-black text-white w-20 h-8 text-2xl font-semibold' onClick={()=>{addedCart>1 && setAddedCart(addedCart-1)}}>-</button>
-                            <input className='border border-slate-600 w-16 h-8 text-center font-bold' onChange={console.log('changed')} type="text" value={addedCart}/>
+                            <input className='border border-slate-600 w-16 h-8 text-center font-bold' readOnly type="text" value={addedCart}/>
                             <button className='bg-black text-white w-20 h-8 text-2xl font-medium' onClick={()=>setAddedCart(addedCart+1)}>+</button> 
                              
                         </div>
                         <p className='text-xs pt-2 text-slate-600 pl-4'>Buy 3 or more products to enjoy free shipping*</p>
-                        <button className='my-9  bg-yellow-400 w-56 h-8 text-md font-semibold' onClick={handleAddtoCart}>Add to Cart</button>
+                        <button className='my-9  bg-yellow-400 w-56 h-8 text-md font-semibold border-2 border-black' onClick={()=>handleAddToCart()}>Add to Cart</button>
                     </div>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import {   faSearch, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import useAuth from '../../../Hooks/useAuth';
 import useCartProducts from '../../../Hooks/useCartProducts';
@@ -11,11 +11,11 @@ import './Navbar.css'
 const Navbar = () => {
     const [searchIcon,setSearchIcon]=useState(false);
     const [fixed,setFixed]=useState(false);
-    const {cartProducts}=useCartProducts();
   const {loginModal,setLoginModal}=useLoginCanvas();
-  const {cartModal,setCartModal}=useCartProducts();
-  console.log(cartModal)
+  const {cartModal,setCartModal,allProducts}=useCartProducts();
   const {user}=useAuth();
+  let totalQuantity=0;
+
 
   window.addEventListener('scroll',function(){
       if(this.window.scrollY>35){
@@ -24,6 +24,12 @@ const Navbar = () => {
           setFixed(false);
       }
   })
+
+
+  allProducts?.map(product=>{
+      totalQuantity=totalQuantity+product.quantity;
+})
+
     return (
        <div className={fixed ? 'sticky z-50 bg-white top-0 ' : ""}>
             <div className='shadow-md  shadow-slate-500/30  pb-2 ' >
@@ -41,7 +47,7 @@ const Navbar = () => {
                </div>
                <div>
                    <button onClick={()=>setSearchIcon(!searchIcon)} className='  md:hidden p-3 '><FontAwesomeIcon icon={faSearch} className="text-2xl  hover:text-yellow-500"/></button>
-                   <button className='ml-3 mr-5  shop-icons' onClick={()=>setCartModal(!cartModal)}><FontAwesomeIcon id='cart' icon={faShoppingCart} className="text-2xl hover:text-yellow-500 transition ease-in-out delay-150   hover:scale-110  duration-300 ... "/>  <p id='cart-badge' className='icons-badge text-4xl'> {cartProducts?.quantity} </p> </button>
+                   <button className='ml-3 mr-5 relative   shop-icons' onClick={()=>setCartModal(!cartModal)}><FontAwesomeIcon id='cart' icon={faShoppingCart} className="text-2xl  transition ease-in-out delay-150   hover:scale-110  duration-300 ... "/>  <p id='cart-badge' className='bg-yellow-500 w-4 rounded-2xl h-6  icons-badge text-sm -z-10'> {totalQuantity} </p> </button>
                    <button className='ml-5 md:ml-9' ><FontAwesomeIcon onClick={()=>setLoginModal(!loginModal)} color={user?'green':'black'} icon={faUser} className=' text-2xl   transition ease-in-out delay-150   hover:scale-110  duration-300' /></button>
                    {/* onClick={()=>navigate('/login')} */}
                         {/* <Link className='hidden md:inline underline decoration-2' to='/login'>LogIn</Link> */}
