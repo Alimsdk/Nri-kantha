@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const SingleProduct = ({singleProduct}) => {
     const {key,name,image1,price,oldprice}=singleProduct;
     return (
-        <div className='mx-2 md:mx-9 my-4 bg-white shadow-lg relative'>
+        <div className='mx-2 md:mx-9 my-4 w-40 bg-white shadow-lg relative'>
              <Link to={`/products/${key}`}>
            <img className='h-48 w-full' src={image1} alt="" />
           <div className="p-5 mb-9">

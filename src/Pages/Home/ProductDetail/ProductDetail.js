@@ -11,7 +11,7 @@ import Topbar from '../Topbar/Topbar';
 const ProductDetail = () => {
     const [addedCart,setAddedCart]=useState(1);
     const [productInfo,setProductInfo]=useState({})
-    const {cartProducts, handleAddtoCart,cartModal,setCartModal}=useCartProducts();
+    const { handleAddtoCart,cartModal,setCartModal}=useCartProducts();
     const {id}=useParams();
 
     useEffect(()=>{
@@ -31,8 +31,12 @@ const ProductDetail = () => {
         }
 
         handleAddtoCart(product);
-
-        setCartModal(true)
+   if(product.quantity===1){
+       
+    setCartModal(!cartModal)
+   }else{
+       setCartModal(true)
+   }
 
         setAddedCart(1)
     }

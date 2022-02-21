@@ -3,4 +3,7 @@
     position: absolute;
     top: -10px;
     left: 30px;
+    display: flex;
+    flex-direction: column;
 }
+
