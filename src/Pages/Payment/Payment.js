@@ -1,11 +1,13 @@
 import React from 'react';
 import Navbar from '../Shared/Navbar/Navbar';
-
+import totalPrice from '../../Hooks/useCartProducts'
+import CartModal from '../Account/CartModal/CartModal';
 const Payment = () => {
     return (
         <div>
             <Navbar/>
-            <h3>This is payment page</h3>
+            <CartModal/>
+            <h3>This is payment page {totalPrice}</h3>
         </div>
     );
 };

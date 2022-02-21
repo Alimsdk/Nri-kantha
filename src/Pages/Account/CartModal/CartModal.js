@@ -8,7 +8,7 @@ import {useNavigate} from 'react-router-dom'
 const CartModal = () => {
     const navigate=useNavigate();
     const {cartModal,setCartModal, allProducts,removeCartProduct,totalPrice}=useCartProducts();
-
+  console.log(totalPrice);
  const handleModalBtn=()=>{
      navigate('/order-info');
  }
@@ -31,7 +31,10 @@ const CartModal = () => {
  
               </div>
               <hr />
-            <div className='md:h-40 md:overflow-y-scroll'>
+            {
+                allProducts?.length > 0 ?
+               <>
+                <div className='md:h-40 md:overflow-y-scroll'>
             {
                    allProducts?.map(product=>(
                        <div className="flex justify-around  my-3">
@@ -60,21 +63,24 @@ const CartModal = () => {
                     <h2 className="text-md text-center py-1.5" id='summary-title'>Order Summary</h2>
                   <div className="grid grid-cols-3 text-sm bg-slate-400 py-1">
                         <h3 className='col-span-2 pl-9'>Sub Total :  </h3>
-                         <p>&#2547; {totalPrice}</p>
+                         <p>&#2547; {totalPrice?  totalPrice : 0}</p>
                     </div>
                     <div className="grid grid-cols-3 text-sm bg-slate-200 py-1">
                         <h3  className='col-span-2 pl-9 text-xs'>Delivery Charge :  </h3>
-                         <p>&#2547; 50</p>
+                         <p> + &#2547; 50</p>
                     </div>
                     <hr />
                     <div className="grid grid-cols-3 bg-black py-1.5 text-md font-semibold text-white">
                         <h3  className='col-span-2 pl-9'> Total :   </h3>
                          <p>&#2547; {totalPrice + 50}</p>
                     </div>
-                    <button onClick={()=>handleModalBtn()} className='text-sm flex mx-auto my-2 border-2 border-yellow-400 px-9 py-1 rounded shadow-lg'>CONFIRM ORDER</button>
+                    <button onClick={()=>handleModalBtn()} className='text-sm flex mx-auto my-3 border-2 border-yellow-400 px-20 py-1 rounded shadow-lg'>CONFIRM ORDER</button>
+                </div> 
+               </>: 
+                <div className="flex h-full items-center justify-center">
+                    <h2 className='text-center'>no product added to cart!</h2>
                 </div>
-
-                  
+            }
 
               </div>
             

@@ -17,9 +17,22 @@ const useCart = () => {
 
     }, []);
 
+    useEffect(()=>{
+       let pricefromLs= localStorage.getItem('_grandTotal')
+       pricefromLs=JSON.parse(pricefromLs);
+       setTotalPrice(pricefromLs)
+    },[])
+
 
 
     const handleAddtoCart = (product) => {
+               const newProductPrice= parseFloat(product?.price)*parseFloat(product?.quantity);
+            const grandTotal= totalPrice>=0 ? totalPrice+newProductPrice : 0 + newProductPrice;
+            console.log(totalPrice,product?.price,product?.quantity);
+            console.log(grandTotal);
+            setTotalPrice(grandTotal)
+            localStorage.setItem('_grandTotal',JSON.stringify(grandTotal))
+        
         // console.log(product);
    let tempAllProducts=allProducts;
 
@@ -50,11 +63,8 @@ const useCart = () => {
          addToStorage('_cart',tempAllProducts)
      }
 
-     if(allProducts){
-         console.log('asi vai');
-        const grandTotal=parseFloat(totalPrice) + (parseFloat(product?.price))*parseFloat((product?.quantity));
-        setTotalPrice(grandTotal)
-       }
+     
+       
 
    }
 
@@ -65,6 +75,14 @@ const useCart = () => {
         // removeFromStorage('_cart')
         localStorage.removeItem('_cart');
         localStorage.setItem('_cart',JSON.stringify(remainingProducts))
+        remainingProducts?.forEach(product=>{
+            const grandTotal=parseFloat(totalPrice) - ((parseFloat(product?.price))*parseFloat((product?.quantity)));
+            console.log(totalPrice,product?.price,product?.quantity);
+            // setTotalPrice(grandTotal)
+            localStorage.setItem('_grandTotal',JSON.stringify(grandTotal));
+            const shoppingCost=localStorage.getItem('_grandTotal');
+            setTotalPrice(shoppingCost)
+        })
         // addToStorage('_cart',JSON.stringify(remainingProducts))
    }
 
@@ -82,7 +100,8 @@ const useCart = () => {
 
         return data;
     }
-
+ 
+    console.log('totalPrice',totalPrice);
 
     return{
         cartProducts,setCartProducts,cartModal,setCartModal,
