@@ -6,6 +6,8 @@ const useCart = () => {
     const [allProducts, setAllProducts] = useState(null);
    const [toggleCart,setToggleCart]=useState(false);
    const [totalPrice,setTotalPrice]=useState(0);
+   const [allOrderInfo,setAllOrderInfo]=useState(null);
+   const [customImgInfo,setCustomImgInfo]=useState(null);
     useEffect(() => {
         let cacheCart = getFromStorage('_cart');
         // console.log(cacheCart);
@@ -27,11 +29,17 @@ const useCart = () => {
 
     const handleAddtoCart = (product) => {
                const newProductPrice= parseFloat(product?.price)*parseFloat(product?.quantity);
-            const grandTotal= totalPrice>=0 ? totalPrice+newProductPrice : 0 + newProductPrice;
+            const grandTotal= totalPrice>0 ? parseFloat(totalPrice)+ parseFloat(newProductPrice) : 0 + newProductPrice;
             console.log(totalPrice,product?.price,product?.quantity);
             console.log(grandTotal);
+           if(allProducts?.length>0){
             setTotalPrice(grandTotal)
             localStorage.setItem('_grandTotal',JSON.stringify(grandTotal))
+           }else{
+               setTotalPrice(0 + (parseFloat(product.price)*parseFloat(product.quantity)));
+               localStorage.setItem('_grandTotal',JSON.stringify(0))
+           }
+           
         
         // console.log(product);
    let tempAllProducts=allProducts;
@@ -75,18 +83,26 @@ const useCart = () => {
         // removeFromStorage('_cart')
         localStorage.removeItem('_cart');
         localStorage.setItem('_cart',JSON.stringify(remainingProducts))
+        let finalCostAmount=0;
         remainingProducts?.forEach(product=>{
-            const grandTotal=parseFloat(totalPrice) - ((parseFloat(product?.price))*parseFloat((product?.quantity)));
+           
+            const grandTotal=((parseFloat(product?.price))*parseFloat((product?.quantity)));
+            finalCostAmount=finalCostAmount+grandTotal;
             console.log(totalPrice,product?.price,product?.quantity);
-            // setTotalPrice(grandTotal)
-            localStorage.setItem('_grandTotal',JSON.stringify(grandTotal));
+           if(remainingProducts.length===0){
+               setTotalPrice(0);
+               localStorage.setItem('_grandTotal',JSON.stringify(0));
+           }else{
+            setTotalPrice(finalCostAmount)
+            localStorage.setItem('_grandTotal',JSON.stringify(finalCostAmount));
             const shoppingCost=localStorage.getItem('_grandTotal');
             setTotalPrice(shoppingCost)
+           }
         })
         // addToStorage('_cart',JSON.stringify(remainingProducts))
    }
 
-
+        console.log(allOrderInfo);
 
     /**
      * This function add content in the browser local storage.
@@ -111,7 +127,12 @@ const useCart = () => {
         removeCartProduct,
         toggleCart,
         setToggleCart,
-        totalPrice
+        totalPrice,
+        setTotalPrice,
+        allOrderInfo,
+        setAllOrderInfo,
+        customImgInfo,
+        setCustomImgInfo
     }
 };
 

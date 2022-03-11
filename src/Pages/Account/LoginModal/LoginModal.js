@@ -12,7 +12,7 @@ const LoginModal = () => {
     const [inputValue,setInputValue]=useState(null);
     const location=useLocation();
     const navigate=useNavigate();
-    const {signInUsingGoogle,user,logOut,signInUsingFacebook,registerNewUser,signInUser,error}=useAuth();
+    const {signInUsingGoogle,user,admin,logOut,signInUsingFacebook,registerNewUser,signInUser,error}=useAuth();
     const [email,setEmail]=useState('');
     const [password,setPassword]=useState('');
     const handleRegisterInput=e=>{
@@ -21,17 +21,21 @@ const LoginModal = () => {
          const newInputValue={...inputValue}
          newInputValue[name]=value;
          setInputValue(newInputValue);
+         
     }
 
     const handleRegistration=e=>{
         e.preventDefault();
-        if(inputValue.password !== inputValue.password2){
-          alert('password did not matched!')
-          return;
-        }
-
-        registerNewUser(inputValue.name,inputValue.email,inputValue.password)
+       
+         
+        console.log(inputValue);
+        registerNewUser(inputValue.name,inputValue.email,inputValue.phone,inputValue.password)
+        
+      
+      
     }
+
+
 
     const handleSignIn=(e)=>{
         e.preventDefault();
@@ -78,15 +82,20 @@ const LoginModal = () => {
                              <label htmlFor="email" className='ml-6 '>Email</label> <br />
                             <input type="email" onBlur={handleRegisterInput}  name="email" id="email" className='border mx-5  font-thin border-slate-600 px-4 py-0.5 mt-1 flex md:mx-auto w-72' placeholder='Your Email' />
                              </div>
+
+                            <div className='mt-1'>
+                             <label htmlFor="phone" className='ml-6 '>Phone</label> <br />
+                            <input type="number" onBlur={handleRegisterInput}  name="phone" id="phone" className='border mx-5  font-thin border-slate-600 px-4 py-0.5 mt-1 flex md:mx-auto w-72' placeholder='Your Phone No..' />
+                             </div>
                            
                              <div className='mt-1'>
                              <label htmlFor="password" className='ml-6 '>Password</label> <br />
                             <input type="password" onBlur={handleRegisterInput} name='password'  id="password" className='border mx-5  font-thin border-slate-600 px-4 py-0.5 mt-1 flex md:mx-auto w-72' placeholder='Your Password' />
                              </div>
-                             <div className='mt-1'>
+                             {/* <div className='mt-1'>
                              <label htmlFor="password2" className='ml-6 '>Re-Enter Password</label> <br />
                             <input type="password" onBlur={handleRegisterInput} name='password2'  id="password2" className='border mx-5  font-thin border-slate-600 px-4 py-0.5 mt-1 flex md:mx-auto w-72' placeholder='Confirm Password' />
-                             </div>
+                             </div> */}
                              <input type="submit" className='w-48 bg-black hover:bg-yellow-400 hover:text-black text-white cursor-pointer py-0.5 flex justify-center mx-auto mt-2 rounded' value="REGISTER" />
                             </form>
                             {error && <p className='text-red-600 text-sm text-center pt-3'>{error}</p> }
@@ -106,13 +115,21 @@ const LoginModal = () => {
                         </div>:
                         <div className='mt-3 text-center'>
                            <div className="pb-5 flex justify-evenly flex-col ">
-                            <img className='w-12 mt-9 h-12 flex mx-auto rounded-3xl' src={user?.photoURL} alt="" />
+                          { user?.photoURL ?  <img className='w-12 mt-9 h-12 flex mx-auto rounded-3xl' src={user?.photoURL} alt="" /> : 
+                          <img src="https://cdn.pixabay.com/photo/2016/08/31/11/54/user-1633249_1280.png" alt="" />
+                          }
                             <h5 className='pt-3'>HELLO , &nbsp; <span className='text-xl text-green-700'>{user?.displayName}</span> </h5>
                            </div>
                             <hr />
                            <div className='mt-5'>
                            <button onClick={()=>navigate('/myorders')} className='border border-slate-700 h-8 w-48'>My Orders</button><br />
                             <button onClick={()=>navigate('/profile')} className='mt-5 border border-slate-700 h-8 w-48'>Your Profile</button> <br />
+                            {
+                                admin && <div>
+                                     <button className='mt-5 border border-slate-700 h-8 w-48' onClick={()=>navigate('/all_orders')}>Manage All Orders</button> 
+                                     <button className='mt-5 border border-slate-700 h-8 w-48' onClick={()=>navigate('/paid_orders')}>Manage Paid Orders</button> 
+                                </div>
+                            }
                             <button className='mt-5 border border-slate-700 h-8 w-48' onClick={logOut}>Log Out</button>
                            </div>
 

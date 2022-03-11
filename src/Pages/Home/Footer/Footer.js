@@ -25,8 +25,8 @@ const Footer = () => {
                        <div className='text-sm text-center pt-4'>
                              <p className='text-lg'>Contact Us</p>
                              <address className='my-2'>Location : Saidpur , Nilphamari </address>
-                             <address className='my-2'>Phone : 01614821673(9am-9pm)</address>
-                             <address className='my-2'>alimsiddique04@gmail.com</address>
+                             <address className='my-2'>Phone : 01614821673(10am-10pm)</address>
+                             <address className='my-2'>nrikantha@gmail.com</address>
                        </div>
              </div>
         </div>

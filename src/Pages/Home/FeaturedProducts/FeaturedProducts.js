@@ -13,7 +13,7 @@ const FeaturedProducts = () => {
 
     useEffect(()=>{
         const loadFeaturedProducts=async()=>{
-         const res=await  fetch('https://fathomless-wave-14683.herokuapp.com/featured');
+         const res=await  fetch('https://damp-earth-60062.herokuapp.com/feature');
          const data=await res.json();
          setFeaturedProducts(data);
         }

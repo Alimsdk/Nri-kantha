@@ -1,21 +1,18 @@
 import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth';
-import useLoginCanvas from '../../Hooks/useLoginCanvas';
 
-const PrivateRoute = ({children}) => {
-    const {setLoginModal}=useLoginCanvas();
+const AdminRoute = ({children}) => {
     const location=useLocation();
-    const {user,loading}=useAuth();
+    const {user,admin,loading}=useAuth();
     if(loading){
        <h2>Loading.....</h2>
     }
-    if(user){
+    if(user && admin){
     return children
     }
-     setLoginModal(true)
     return <Navigate to="/home" state={{from:location}}   /> 
     
 };
 
-export default PrivateRoute;
+export default AdminRoute;

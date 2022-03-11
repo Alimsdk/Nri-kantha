@@ -1,6 +1,6 @@
 import {  faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import React,{useState} from 'react';
 import useCartProducts from '../../../Hooks/useCartProducts';
 import closeIcon from '../../../resources/icons/close.png'
 import {useNavigate} from 'react-router-dom'
@@ -8,17 +8,34 @@ import {useNavigate} from 'react-router-dom'
 const CartModal = () => {
     const navigate=useNavigate();
     const {cartModal,setCartModal, allProducts,removeCartProduct,totalPrice}=useCartProducts();
-  console.log(totalPrice);
- const handleModalBtn=()=>{
-     navigate('/order-info');
- }
+  console.log(allProducts);
+
+
 
  const handleRemoveCartItem=(id)=>{
 
     removeCartProduct(id)
 
  }
+
+ let deliveryCharge=30;
+
+ allProducts?.forEach(pd=>{
+     if(pd.deliverycharge>30){
+         deliveryCharge=60;
+     }
+ })
   
+ 
+
+ const handleModalBtn=()=>{
+
+    navigate('/order-info');
+    setCartModal(false)
+   
+
+}
+
     return (
     
             <div>
@@ -37,8 +54,9 @@ const CartModal = () => {
                 <div className='md:h-40 md:overflow-y-scroll'>
             {
                    allProducts?.map(product=>(
+                       
                        <div className="flex justify-around  my-3">
-                          
+
                           <div>
                            <img className='w-16 h-16' src={product?.image1} alt="" />
                            </div>
@@ -67,12 +85,16 @@ const CartModal = () => {
                     </div>
                     <div className="grid grid-cols-3 text-sm bg-slate-200 py-1">
                         <h3  className='col-span-2 pl-9 text-xs'>Delivery Charge :  </h3>
-                         <p> + &#2547; 50</p>
+                         <p> + &#2547; {deliveryCharge}</p>
                     </div>
                     <hr />
                     <div className="grid grid-cols-3 bg-black py-1.5 text-md font-semibold text-white">
                         <h3  className='col-span-2 pl-9'> Total :   </h3>
-                         <p>&#2547; {totalPrice + 50}</p>
+                         <p>&#2547; {parseFloat(totalPrice) + parseFloat(deliveryCharge)}
+                         {
+                             localStorage.setItem("finalTotalCost",JSON.stringify(parseFloat(totalPrice) + parseFloat(deliveryCharge)))
+                         }
+                          </p>
                     </div>
                     <button onClick={()=>handleModalBtn()} className='text-sm flex mx-auto my-3 border-2 border-yellow-400 px-20 py-1 rounded shadow-lg'>CONFIRM ORDER</button>
                 </div> 

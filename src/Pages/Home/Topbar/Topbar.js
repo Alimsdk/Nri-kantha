@@ -11,7 +11,7 @@ const Topbar = () => {
              </div>
              <div>
              <FontAwesomeIcon icon={faPhone} className="text-xs "/> &nbsp;
-             <span className='text-xs '>01614821673(9am-9pm)</span>
+             <span className='text-xs '>01614821673(10am-10pm)</span>
              </div>
         </div>
     );

@@ -1,7 +1,6 @@
 import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, signInWithEmailAndPassword ,FacebookAuthProvider, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useEffect, useState } from "react";
 import initializeAuthentication from "../Firebase/firebase.initialize";
-import React from 'react'
 
 
 initializeAuthentication();
@@ -10,16 +9,21 @@ const useFirebase=()=>{
     const [user,setUser]=useState(null);
     const [error,setError]=useState('');
     const [loading,setLoading]=useState(true);
+    const [admin,setAdmin]=useState(false);
     const auth=getAuth();
     const googleProvider=new GoogleAuthProvider();
     const facebookProvider=new FacebookAuthProvider();
+
+  
   
     const signInUsingGoogle=(location,navigate)=>{
         setLoading(true);
         signInWithPopup(auth,googleProvider)
         .then(res=>{
             // console.log(res.user);
-            setUser(res.user);
+            const data=res.user;
+            setUser(data);
+            dataToFetch(data,'PUT')
             setError('');
         }).catch(error=>{
             // console.log(error.message);
@@ -32,7 +36,9 @@ const useFirebase=()=>{
         setLoading(true);
         signInWithPopup(auth,facebookProvider)
         .then(res=>{
-            setUser(res.user);
+            const data=res.user;
+            setUser(data);
+            dataToFetch(data,'PUT')
             setError('');
         }).catch(error=>{
             setUser(null);
@@ -40,12 +46,13 @@ const useFirebase=()=>{
         })
     }
 
-    const registerNewUser=(name,email,password)=>{
+    const registerNewUser=(name,email,phone,password)=>{
         setLoading(true);
         createUserWithEmailAndPassword(auth,email,password)
         .then(()=>{
-            const newUser={email,password,displayName:name}
+            const newUser={email,password,phone,displayName:name}
             setUser(newUser);
+            dataToFetch(newUser,'POST')
             updateProfile(auth.currentUser,{
                 displayName:name
             })
@@ -67,6 +74,13 @@ const useFirebase=()=>{
             setUser(null);
         }).finally(()=>setLoading(false))
     }
+
+
+   useEffect(()=>{
+       fetch(`https://damp-earth-60062.herokuapp.com/users/${user?.email}`)
+       .then(res=>res.json())
+       .then(data=>setAdmin(data?.admin));
+   },[user?.email])
 
     const logOut=()=>{
         setLoading(true);
@@ -95,8 +109,20 @@ const useFirebase=()=>{
 
     // console.log(error)
 
+
+
+    const dataToFetch=(inputValue,methodType)=>{
+        fetch('https://damp-earth-60062.herokuapp.com/users',{
+            method:methodType,
+            headers:{
+                'content-type':'application/json'
+            },
+            body:JSON.stringify(inputValue)
+        }).then();
+     }
+
     return{
-        user,signInUsingGoogle,error,loading,logOut,signInUsingFacebook,registerNewUser,signInUser
+        user,admin,signInUsingGoogle,error,loading,logOut,signInUsingFacebook,registerNewUser,signInUser
     }
     
 
