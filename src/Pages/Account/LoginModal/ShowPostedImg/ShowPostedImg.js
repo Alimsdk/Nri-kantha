@@ -4,7 +4,7 @@ import DisplayPostedImg from './DisplayPostedImg';
 const ShowPostedImg = () => {
       const [imageDetails,setImageDetails]=useState({});
     useEffect(()=>{
-        fetch('https://damp-earth-60062.herokuapp.com/images')
+        fetch('https://nameless-castle-34131.herokuapp.com/images')
         .then(res=>res.json())
         .then(data=>setImageDetails(data));
     },[])

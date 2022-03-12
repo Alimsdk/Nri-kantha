@@ -6,7 +6,7 @@ const OrderHistory = () => {
     const {user}=useAuth();
     const [myOrders,setMyOrders]=useState();
     useEffect(()=>{
-        const url=`https://damp-earth-60062.herokuapp.com/orderconfirm?email=${user?.email}`;
+        const url=`https://nameless-castle-34131.herokuapp.com/orderconfirm?email=${user?.email}`;
        console.log(url);
         const loadMyOrders=async()=>{
             const res=await fetch(url);

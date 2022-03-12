@@ -4,7 +4,7 @@ import Navbar from '../../../Shared/Navbar/Navbar'
 const ManageAllOrders = () => {
     const [manageAllOrders,setManageAllOrders]=useState();
     useEffect(()=>{
-        const url='https://damp-earth-60062.herokuapp.com/all_orders';
+        const url='https://nameless-castle-34131.herokuapp.com/all_orders';
 
         const loadAllOrders=async()=>{
             const res=await fetch(url);

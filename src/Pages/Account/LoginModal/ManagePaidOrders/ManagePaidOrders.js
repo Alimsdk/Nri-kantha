@@ -5,7 +5,7 @@ import ShowPaidOrders from './ShowPaidOrders';
 const ManagePaidOrders = () => {
     const [allPaidOrders,setAllPaidOrders]=useState(null);
     useEffect(()=>{
-        const url='https://damp-earth-60062.herokuapp.com/paid_orders';
+        const url='https://nameless-castle-34131.herokuapp.com/paid_orders';
 
         const loadAllPaidOrders=()=>{
             fetch(url)

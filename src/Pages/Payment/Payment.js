@@ -29,7 +29,7 @@ const Payment = () => {
     const handleTransId=()=>{
         const finalDataDb={...allOrderInfo,transId:transictionId}
         console.log('ultimate value',finalDataDb);
-        fetch('https://damp-earth-60062.herokuapp.com/orderconfirm',{
+        fetch('https://nameless-castle-34131.herokuapp.com/orderconfirm',{
             method:'POST',
             headers:{
                 'content-type':'application/json'

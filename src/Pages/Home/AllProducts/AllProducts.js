@@ -5,7 +5,7 @@ const AllProducts = () => {
     const [allProducts,setAllProducts]=useState(null);
     useEffect(()=>{
        const fetchProduct=async()=>{
-        const result=await fetch('https://damp-earth-60062.herokuapp.com/products');
+        const result=await fetch('https://nameless-castle-34131.herokuapp.com/products');
         const data=await result.json();
         setAllProducts(data);
        }

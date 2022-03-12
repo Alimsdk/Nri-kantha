@@ -77,7 +77,7 @@ const useFirebase=()=>{
 
 
    useEffect(()=>{
-       fetch(`https://damp-earth-60062.herokuapp.com/users/${user?.email}`)
+       fetch(`https://nameless-castle-34131.herokuapp.com/users/${user?.email}`)
        .then(res=>res.json())
        .then(data=>setAdmin(data?.admin));
    },[user?.email])
@@ -112,7 +112,7 @@ const useFirebase=()=>{
 
 
     const dataToFetch=(inputValue,methodType)=>{
-        fetch('https://damp-earth-60062.herokuapp.com/users',{
+        fetch('https://nameless-castle-34131.herokuapp.com/users',{
             method:methodType,
             headers:{
                 'content-type':'application/json'
