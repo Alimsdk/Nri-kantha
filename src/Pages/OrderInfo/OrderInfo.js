@@ -7,7 +7,7 @@ import Navbar from '../Shared/Navbar/Navbar';
 import useAuth from '../../Hooks/useAuth'
 const OrderInfo = () => {
     const navigate=useNavigate();
-    const {allProducts,setAllProducts,setTotalPrice,setAllOrderInfo,allOrderInfo,customImgInfo,setCustomImgInfo}=useCartProducts();
+    const {allProducts,setAllProducts,setTotalPrice,setAllOrderInfo,allOrderInfo,customImgInfo}=useCartProducts();
     const [orders,setOrders]=useState({});
     const {user} = useAuth();
 

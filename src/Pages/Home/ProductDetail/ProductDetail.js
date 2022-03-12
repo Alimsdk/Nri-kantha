@@ -12,8 +12,8 @@ import Topbar from '../Topbar/Topbar';
 const ProductDetail = () => {
     const [addedCart,setAddedCart]=useState(1);
     const [customizeText,setCustomizeText]=useState('');
-    const [productInfo,setProductInfo]=useState({})
-    const { handleAddtoCart,cartModal,setCartModal,customImgInfo,setCustomImgInfo}=useCartProducts();
+    const [productInfo,setProductInfo]=useState(null)
+    const { handleAddtoCart,cartModal,setCartModal,setCustomImgInfo}=useCartProducts();
     const {setLoginModal}=useLoginCanvas();
     const {id}=useParams();
 
@@ -30,7 +30,11 @@ const ProductDetail = () => {
     },[])
 
     if(!productInfo){
-        return( <h2>Loading....</h2> )
+        return( 
+            <div class="flex items-center justify-center items-center ">
+    <div class="w-24 h-24 border-l-2 border-gray-900 rounded-full animate-spin"></div>
+</div>
+        )
     }
 
     const handleCustomizeText=e=> setCustomizeText(e.target.value);
