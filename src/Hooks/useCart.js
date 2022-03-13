@@ -30,14 +30,18 @@ const useCart = () => {
     const handleAddtoCart = (product) => {
                const newProductPrice= parseFloat(product?.price)*parseFloat(product?.quantity);
             const grandTotal= totalPrice>0 ? parseFloat(totalPrice)+ parseFloat(newProductPrice) : 0 + newProductPrice;
-            console.log(totalPrice,product?.price,product?.quantity);
+
             console.log(grandTotal);
+
            if(allProducts?.length>0){
             setTotalPrice(grandTotal)
             localStorage.setItem('_grandTotal',JSON.stringify(grandTotal))
            }else{
                setTotalPrice(0 + (parseFloat(product.price)*parseFloat(product.quantity)));
-               localStorage.setItem('_grandTotal',JSON.stringify(0))
+               const newItemPrice=(parseFloat(product.price)*parseFloat(product.quantity));
+               console.log('total price',totalPrice);
+               console.log('grnd price',grandTotal);
+               localStorage.setItem('_grandTotal',JSON.stringify(newItemPrice))
            }
            
         
@@ -58,6 +62,7 @@ const useCart = () => {
         //    console.log(tempAllProducts);
        setAllProducts(tempAllProducts)
        addToStorage('_cart',tempAllProducts)
+       console.log(totalPrice);
        }else{
            setAllProducts([product]);
            addToStorage('_cart',[product])

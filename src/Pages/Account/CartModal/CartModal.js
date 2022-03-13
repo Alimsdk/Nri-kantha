@@ -1,6 +1,6 @@
 import {  faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React,{useState} from 'react';
+import React from 'react';
 import useCartProducts from '../../../Hooks/useCartProducts';
 import closeIcon from '../../../resources/icons/close.png'
 import {useNavigate} from 'react-router-dom'

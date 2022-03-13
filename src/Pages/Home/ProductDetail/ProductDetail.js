@@ -82,7 +82,7 @@ const ProductDetail = () => {
                     <img className='w-20 mx-5 cursor-pointer hover:border-4 hover:border-yellow-400' src={productInfo.image1} alt="" />
                     <img className='w-20 cursor-pointer hover:border-4 hover:border-yellow-400' src={productInfo.image2} alt="" /></div>}
                 </div>
-                <div className='col-span-2 ml-14 '>
+                <div className='col-span-2 ml-9 md:ml-14 '>
                     <h3 className='text-2xl mt-4 mb-2'>{productInfo?.name}</h3>
                     <p className='text-xs mt-2 mb-4 text-slate-600 '>{productInfo?.description}</p>
                     <h5 className='mt-4 mb-1 font-semibold text-xl'>&#2547;{productInfo?.price} <del className='text-sm text-slate-600'>{productInfo?.oldprice}</del> </h5>

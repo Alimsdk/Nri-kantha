@@ -16,6 +16,14 @@ const Navbar = () => {
   const {user}=useAuth();
   let totalQuantity=0;
 
+  if(cartModal){
+      setLoginModal(false);
+  }
+
+  if(loginModal){
+      setCartModal(false);
+  }
+
 
   window.addEventListener('scroll',function(){
       if(this.window.scrollY>35){

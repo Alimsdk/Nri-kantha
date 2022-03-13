@@ -26,8 +26,11 @@ const Payment = () => {
     console.log(allOrderInfo);
 
     let transictionId;
+
+    console.log(transictionId);
     const handleTransId=()=>{
-        const finalDataDb={...allOrderInfo,transId:transictionId}
+        if(transictionId){
+            const finalDataDb={...allOrderInfo,transId:transictionId}
         console.log('ultimate value',finalDataDb);
         fetch('https://nameless-castle-34131.herokuapp.com/orderconfirm',{
             method:'POST',
@@ -39,6 +42,7 @@ const Payment = () => {
         alert('আপনার অর্ডার সম্পন্ন হয়েছে !! দ্রতই আপনার সাথে যোগাযোগ করা হবে , ধন্যবাদ ! ')
 
          navigate('/');
+        }
     }
 
     return (
@@ -50,7 +54,7 @@ const Payment = () => {
                 <h3 className='text-lg' > মোট মূল্যের ৩০% অগ্রিম প্রদানের মাধ্যমে অর্ডার নিশ্চিত করুন !</h3>
                 <h4 className='mt-5'>আপনার ক্রয়কৃৎ পন্যের মোট মূল্য {finalTotalAmount} টাকার ৩০% অর্থাৎ <span className='bg-yellow-400'>{finalTotalAmount*0.3} টাকা</span> বিকাশের মাধ্যমে পরিশোধ করুন</h4>
                 <h4 className=" my-9">
-                   বিকাশে  <span className='bg-yellow-400'>01614821673</span> এই নম্বরে <span className='bg-yellow-400'>{finalTotalAmount*0.3} টাকা</span> সেন্ড মানি করে মেসেজে যে ট্রাঞ্জিকশন আইডি পাবেন সেটি প্রদান করুণ!
+                   বিকাশে  <span className='bg-yellow-400'>01763572771</span> এই নম্বরে <span className='bg-yellow-400'>{finalTotalAmount*0.3} টাকা</span> সেন্ড মানি করে মেসেজে যে ট্রাঞ্জিকশন আইডি পাবেন সেটি প্রদান করুণ!
                 </h4>
              <input className="w-96 border-2 py-1.5 px-9 rounded text-left text-sm border-black" onBlur={(e)=>transictionId=e.target.value} type="text" placeholder= 'মেসেজে পাওয়া ট্রাঞ্জিকশন আইডি প্রদান করুন ' />
               <br /> <br />  <button className='bg-yellow-400 px-5' onClick={handleTransId}>অর্ডার নিশ্চিত করুন</button> <br /> <br />
