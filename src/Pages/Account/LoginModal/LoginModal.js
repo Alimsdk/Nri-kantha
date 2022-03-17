@@ -1,4 +1,5 @@
 import { faFacebookSquare, faGoogle } from '@fortawesome/free-brands-svg-icons';
+import googleLogo from '../../../resources/icons/google-logo.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React,{useState} from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -108,7 +109,7 @@ const LoginModal = () => {
                             <span className=' text-white  px-5 py-1 text-sm'>LogIn With Facebook</span>
                             </button>
                             <button className='items-center bg-yellow-500 rounded flex mx-auto mb-1 shadow-lg'>
-                            <FontAwesomeIcon icon={faGoogle} onClick={()=>signInUsingGoogle(location,navigate)}  className="text-3xl py-1  mt-0.5  border bg-white  "/> 
+                            <img className="w-9 py-1 pl-3" src={googleLogo} alt="google logo" onClick={()=>signInUsingGoogle(location,navigate)}  />   
                             <span className=' text-white px-5 py-1  text-sm ' onClick={()=>signInUsingGoogle(location,navigate)} >LogIn With Google</span>
                             </button>
                            

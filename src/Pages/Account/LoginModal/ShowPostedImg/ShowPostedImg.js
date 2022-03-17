@@ -2,18 +2,22 @@ import React,{useState,useEffect} from 'react';
 import DisplayPostedImg from './DisplayPostedImg';
 
 const ShowPostedImg = () => {
-      const [imageDetails,setImageDetails]=useState({});
+      const [imageDetails,setImageDetails]=useState(null);
     useEffect(()=>{
-        fetch('https://nameless-castle-34131.herokuapp.com/images')
-        .then(res=>res.json())
-        .then(data=>setImageDetails(data));
+        const loadImg=async()=>{
+            const res=await fetch('https://nameless-castle-34131.herokuapp.com/images');
+            const data=await res.json();
+            setImageDetails(data);
+        }
+
+        loadImg();
     },[])
 
     console.log(imageDetails)
     return (
-        <div>
+        <div className='grid grid-cols-1 md:grid-cols-2'>
               {
-                 imageDetails?.map(singleImg=><DisplayPostedImg key={singleImg._id} singleImg={singleImg} />)
+                 imageDetails?.map(singleImg=><DisplayPostedImg key={singleImg?._id} singleImg={singleImg} />)
              }
             
         </div>

@@ -2,6 +2,8 @@ import React,{useEffect,useState} from 'react';
 import useAuth from '../../../../Hooks/useAuth';
 import MyOrder from '../myOrders/MyOrder';
 import Navbar from '../../../Shared/Navbar/Navbar'
+import LoginModal from '../LoginModal';
+import CartModal from '../../CartModal/CartModal';
 const OrderHistory = () => {
     const {user}=useAuth();
     const [myOrders,setMyOrders]=useState();
@@ -21,6 +23,8 @@ const OrderHistory = () => {
     return (
         <div>
             <Navbar/>
+            <LoginModal/>
+            <CartModal/>
             <h2 className="text-center">Your Orders History</h2>
              
              {

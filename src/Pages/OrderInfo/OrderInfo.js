@@ -27,6 +27,8 @@ const OrderInfo = () => {
     
 
     const submitOrderInfo=(e)=>{
+
+        console.log('yooo ',orders);
           
     const orderInformation={...orders,total:finalTotalCost,products:allProducts}
 
@@ -76,7 +78,7 @@ const OrderInfo = () => {
             <h1 id='delivery-info-title' className='text-center mt-9 text-xl'>Please Provide Your Delivery Details</h1>
             <form className='flex flex-col justify-center w-72 mx-auto mt-5' onSubmit={submitOrderInfo}>
                 <input name='orderUserName' onBlur={handleInfoInputs}  className='bg-slate-100 font-light text-md my-3 py-1.5 px-5 border-2 border-black rounded' type="text" defaultValue={user?.displayName} placeholder='Your Name'required/>
-                <input name='orderUserEmail'onBlur={handleInfoInputs}  className='bg-slate-100 font-light text-md my-3 py-1.5 px-5 border-2 border-black rounded' type="email" defaultValue={user?.email}  id="email-input" placeholder='Your Email'/>
+                <input name='orderUserEmail'onBlur={handleInfoInputs}  className='bg-slate-100 font-light text-md my-3 py-1.5 px-5 border-2 border-black rounded' type="email"   id="email-input" placeholder='Your Email'/>
                 <input name='orderUserPhone'onBlur={handleInfoInputs}  className='bg-slate-100 font-light text-md my-3 py-1.5 px-5 border-2 border-black rounded' type="number" placeholder='Your Phone Number..' required/>
                 <input name='orderLocation' onBlur={handleInfoInputs} className='bg-slate-100 font-light text-md my-3 py-1.5 px-5 border-2 border-black rounded' type="text" placeholder='Delivery Location' required/>
                 <input className='bg-yellow-400 cursor-pointer my-3 py-1 px-5 border-2 border-black rounded' type="submit" value="PROCEED TO PAYMENT"/>
