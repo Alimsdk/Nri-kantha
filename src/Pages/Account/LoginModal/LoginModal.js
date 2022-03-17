@@ -129,6 +129,7 @@ const LoginModal = () => {
                                 admin && <div>
                                      <button className='mt-5 border border-slate-700 h-8 w-48' onClick={()=>navigate('/all_orders')}>Manage All Orders</button> 
                                      <button className='mt-5 border border-slate-700 h-8 w-48' onClick={()=>navigate('/paid_orders')}>Manage Paid Orders</button> 
+                                     <button className='mt-5 border border-slate-700 h-8 w-48' onClick={()=>navigate('/custom_img')}>Order Images</button> 
                                 </div>
                             }
                             <button className='mt-5 border border-slate-700 h-8 w-48' onClick={logOut}>Log Out</button>

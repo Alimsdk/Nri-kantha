@@ -14,6 +14,9 @@ const ShowPostedImg = () => {
     },[])
 
     console.log(imageDetails)
+    if(!imageDetails){
+        return <h2>Loading...</h2>
+    }
     return (
         <div className='grid grid-cols-1 md:grid-cols-2'>
               {
