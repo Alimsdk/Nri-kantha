@@ -31,8 +31,8 @@ const ProductDetail = () => {
 
     if(!productInfo){
         return( 
-            <div class="flex items-center justify-center items-center ">
-    <div class="w-24 h-24 border-l-2 border-gray-900 rounded-full animate-spin"></div>
+            <div className="flex items-center justify-center items-center ">
+    <div className="w-24 h-24 border-l-2 border-gray-900 rounded-full animate-spin"></div>
 </div>
         )
     }

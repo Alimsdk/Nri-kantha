@@ -39,8 +39,7 @@ const OrderInfo = () => {
         setAllProducts(null);
         setTotalPrice(0)
 
-        console.log('the custom img is ', customImgInfo);
-
+       if(customImgInfo){
         const formData=new FormData();
         formData.append('image',customImgInfo);
         formData.append('email',orders?.orderUserEmail);
@@ -53,6 +52,7 @@ const OrderInfo = () => {
         }).then(res=>res.json())
         .then(data=>console.log('success',data))
         .catch(err=>console.log('error',err))
+       }
 
 
 
@@ -66,7 +66,6 @@ const OrderInfo = () => {
 
         setAllOrderInfo(orderInformation)
        
-        console.log(allOrderInfo);
     
     }
     return (

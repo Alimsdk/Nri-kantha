@@ -20,15 +20,15 @@ const FeaturedProducts = () => {
         loadFeaturedProducts();
     },[])
 
-    if(!featuredProducts){
-      return <div>
-       <div class="flex justify-center items-center">
-       <div class="spinner-grow inline-block w-8 h-8 bg-current rounded-full opacity-0" role="status">
-         <span class="visually-hidden">Loading...</span>
-       </div>
-      </div>
-      </div>
-    }
+    // if(!featuredProducts){
+    //   return <div>
+    //    <div class="flex justify-center items-center">
+    //    <div class="spinner-grow inline-block w-8 h-8 bg-current rounded-full opacity-0" role="status">
+    //      <span class="visually-hidden">Loading...</span>
+    //    </div>
+    //   </div>
+    //   </div>
+    // }
 
     return (
         <div id='feature' className="bg-yellow-400 my-12 pb-9 pl-1 md:pl-5 ">
