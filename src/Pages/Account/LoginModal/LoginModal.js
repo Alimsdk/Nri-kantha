@@ -117,7 +117,7 @@ const LoginModal = () => {
                         <div className='mt-3 text-center'>
                            <div className="pb-5 flex justify-evenly flex-col ">
                           { user?.photoURL ?  <img className='w-12 mt-9 h-12 flex mx-auto rounded-3xl' src={user?.photoURL} alt="" /> : 
-                          <img src="https://cdn.pixabay.com/photo/2016/08/31/11/54/user-1633249_1280.png" alt="" />
+                          <img className='w-12 mt-9 h-12 flex mx-auto rounded-3xl' src="https://cdn.pixabay.com/photo/2016/08/31/11/54/user-1633249_1280.png" alt="" />
                           }
                             <h5 className='pt-3'>HELLO , &nbsp; <span className='text-xl text-green-700'>{user?.displayName}</span> </h5>
                            </div>
