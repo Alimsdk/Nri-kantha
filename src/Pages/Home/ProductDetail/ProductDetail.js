@@ -12,7 +12,8 @@ import Topbar from '../Topbar/Topbar';
 const ProductDetail = () => {
     const [addedCart,setAddedCart]=useState(1);
     const [customizeText,setCustomizeText]=useState('');
-    const [productInfo,setProductInfo]=useState(null)
+    const [productInfo,setProductInfo]=useState(null);
+    const [imgUrl,setImgUrl]=useState(null);
     const { handleAddtoCart,cartModal,setCartModal,setCustomImgInfo}=useCartProducts();
     const {setLoginModal}=useLoginCanvas();
     const {id}=useParams();
@@ -77,10 +78,10 @@ const ProductDetail = () => {
             <CartModal/>
             <div className="grid grid-cols-1 md:grid-cols-3 mt-9 ">
                 <div>
-                    <img className='h-80 w-64 flex mx-auto  md:ml-20' src={productInfo?.image1} alt="" />
+                    <img className='h-80 w-64 flex mx-auto  md:ml-20' src={imgUrl? imgUrl : productInfo?.image1} alt="" />
                    { productInfo?.image2 && <div className='flex mt-9 justify-center'>          
-                    <img className='w-20 mx-5 cursor-pointer hover:border-4 hover:border-yellow-400' src={productInfo.image1} alt="" />
-                    <img className='w-20 cursor-pointer hover:border-4 hover:border-yellow-400' src={productInfo.image2} alt="" /></div>}
+                    <img onClick={()=>setImgUrl(productInfo.image1)} className='w-20 mx-5 cursor-pointer hover:border-4 hover:border-yellow-400' src={productInfo.image1} alt="" />
+                    <img onClick={()=>setImgUrl(productInfo.image2)} className='w-20 cursor-pointer hover:border-4 hover:border-yellow-400' src={productInfo.image2} alt="" /></div>}
                 </div>
                 <div className='col-span-2 ml-9 md:ml-14 '>
                     <h3 className='text-2xl mt-4 mb-2'>{productInfo?.name}</h3>

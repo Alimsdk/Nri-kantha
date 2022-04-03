@@ -1,4 +1,4 @@
-import { faFacebookSquare, faGoogle } from '@fortawesome/free-brands-svg-icons';
+import { faFacebookSquare } from '@fortawesome/free-brands-svg-icons';
 import googleLogo from '../../../resources/icons/google-logo.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React,{useState} from 'react';
