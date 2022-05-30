@@ -19,7 +19,7 @@ const AllProducts = () => {
     return (
         <div style={{backgroundColor:'#ffe7e763'}} className="mb-5 pb-5">
             <h3 className='text-2xl ml-3 md:ml-9 py-5'>All Products</h3>
-            <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 '>
+            <div style={{maxWidh:"1440px",margin:"0 auto"}} className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 '>
             {
                 allProducts?.map(singleProduct=><SingleProduct key={singleProduct._id} singleProduct={singleProduct}/>)
             }

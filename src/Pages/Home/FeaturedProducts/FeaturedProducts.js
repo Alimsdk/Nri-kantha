@@ -33,7 +33,7 @@ const FeaturedProducts = () => {
     return (
         <div id='feature' className="bg-yellow-400 my-12 pb-9 pl-1 md:pl-5 ">
             <h2 id='feature-title' className='pt-9 ml-5 md:ml-0  pb-16 text-2xl '>Feature Products</h2>
-            <Swiper loop={true}
+            <Swiper style={{maxWidth: "1600px"}} loop={true}
         
         autoplay={{      
             delay: 5000,
