@@ -13,7 +13,7 @@ const FeaturedProducts = () => {
 
     useEffect(()=>{
         const loadFeaturedProducts=async()=>{
-         const res=await  fetch('https://nameless-castle-34131.herokuapp.com/feature');
+         const res=await  fetch('https://nrikantha.up.railway.app/feature');
          const data=await res.json();
          setFeaturedProducts(data);
         }
