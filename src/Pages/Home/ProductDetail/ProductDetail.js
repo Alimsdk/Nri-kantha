@@ -20,7 +20,7 @@ const ProductDetail = () => {
 
 
     useEffect(()=>{
-       const url= `https://nameless-castle-34131.herokuapp.com/products/${id}`;
+       const url= `https://nrikantha.up.railway.app/products/${id}`;
        const fetchDetails=async()=>{
            
            const res=await fetch(url);
