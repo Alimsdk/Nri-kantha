@@ -4,8 +4,8 @@ import DisplayPaidProducts from './DisplayPaidProducts';
 const ShowPaidOrders = ({paidOrder}) => {
     const {orderUserName,orderUserEmail,orderUserPhone,orderLocation,products,total,transId}=paidOrder;
     return (
-        <div className="grid grid-cols-4 items-center">
-            <div className="mx-5">
+        <div className="grid grid-cols-5 items-center">
+            <div className="mx-5 col-span-2">
                 <h4>Name : {orderUserName}</h4>
                 <h4>Email : {orderUserEmail}</h4>
                 <h4>Phone : {orderUserPhone}</h4>

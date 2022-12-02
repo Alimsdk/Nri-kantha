@@ -48,7 +48,7 @@ const OrderInfo = () => {
         formData.append('name',orders?.orderUserName);
         formData.append('phone',orders?.orderUserPhone);
         
-        fetch('https://nameless-castle-34131.herokuapp.com/images',{
+        fetch('https://nrikantha.up.railway.app/images',{
             method:'POST',
             body:formData
         }).then(res=>res.json())
@@ -58,7 +58,7 @@ const OrderInfo = () => {
 
 
 
-        fetch('https://nameless-castle-34131.herokuapp.com/orders',{
+        fetch('https://nrikantha.up.railway.app/orders',{
             method:'POST',
             headers:{
                 'content-type':'application/json'

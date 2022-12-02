@@ -32,7 +32,7 @@ const Payment = () => {
         if(transictionId){
             const finalDataDb={...allOrderInfo,transId:transictionId}
         console.log('ultimate value',finalDataDb);
-        fetch('https://nameless-castle-34131.herokuapp.com/orderconfirm',{
+        fetch('https://nrikantha.up.railway.app/orderconfirm',{
             method:'POST',
             headers:{
                 'content-type':'application/json'

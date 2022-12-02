@@ -8,7 +8,7 @@ const ShowAllOrders = ({order}) => {
      const {orderUserName,orderUserEmail,orderUserPhone,orderLocation,total,products}=order;
     return (
         <div className='grid grid-cols-5 items-center my-9 border-2 px-5 py-2'>
-            <div>
+            <div className='col-span-2'>
             <h2>Name : {orderUserName}</h2>
             <h4 className="text-sm">Email : {orderUserEmail}</h4>
             <h4>Phone : {orderUserPhone}</h4>
